@@ -6,6 +6,7 @@ class Modal extends Component {
    consturctor(props) {
       super(props);
       this.el = document.createElement('div');
+      this.el.classList.add('Modal');
    }
 
    componentDidMount() {
