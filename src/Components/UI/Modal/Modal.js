@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import ReactDOM, { Component } from 'react';
 
 const modalRoot = document.getElementById('modal-root');
 
 class Modal extends Component {
-   consturctor(props) {
+   constructor(props) {
       super(props);
       this.el = document.createElement('div');
       this.el.classList.add('Modal');
