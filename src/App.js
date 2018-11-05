@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import './App.css';
 
 import Navbar from './Components/Navigation/Navbar/Navbar';
+import Tasks from './Components/Tasks/Tasks';
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar />
+        <Tasks tasksList={[{id: 1, title: 'first', description: 'desc 1'}, {id: 2, title: 'second', description: 'desc 2'}]} />
         {routes}
       </div>
     );
