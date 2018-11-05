@@ -7,5 +7,14 @@
    border-radius: 3px;
    background-color: #eee;
    border: 2px solid #9C27B0;
+}
+
+.data-container {
+   height: 70%;
    text-align: center;
+}
+
+.controls-container {
+   height: 30%;
+   display: flex;
 }
