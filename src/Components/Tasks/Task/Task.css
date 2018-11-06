@@ -1,0 +1,21 @@
+.Task {
+   box-sizing: border-box;
+   width: 250px;
+   height: 200px;
+   padding: 10px;
+   margin: 10px 0;
+   border-radius: 3px;
+   background-color: #eee;
+   border: 2px solid #9C27B0;
+}
+
+.data-container {
+   height: 70%;
+   text-align: center;
+}
+
+.controls-container {
+   height: 30%;
+   display: flex;
+   border-top: 2px solid #ccc;
+}
