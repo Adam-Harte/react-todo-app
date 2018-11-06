@@ -12,11 +12,10 @@ describe('<Tasks />', () => {
    let wrapper;
 
    beforeEach(() => {
-      wrapper = shallow(<Tasks />);
+      wrapper = shallow(<Tasks tasksList={[{id: 1, title: 'first', description: 'desc 1'}, {id: 2, title: 'second', description: 'desc 2'}]} />);
    });
 
    it('should render 2 Task components when the tasksList array has 2 elements', () => {
-      wrapper.setProps({tasksList: [{id: 1, title: 'first', description: 'desc 1'}, {id: 2, title: 'second', description: 'desc 2'}]});
       expect(wrapper.find(Task)).toHaveLength(2);
-   })
-})
+   });
+});
