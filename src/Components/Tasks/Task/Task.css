@@ -17,4 +17,5 @@
 .controls-container {
    height: 30%;
    display: flex;
+   border-top: 2px solid #ccc;
 }

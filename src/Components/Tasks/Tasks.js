@@ -7,7 +7,11 @@ const Tasks = (props) => {
    return (
       <div className="Tasks">
          {props.tasksList.map(task => {
-            return <Task key={task.id} data={task} />
+            if (task.complete) {
+               return <Task key={task.id} data={task} delete />
+            } else {
+               return <Task key={task.id} data={task} complete edit delete />
+            }
          })}
       </div>
    );
