@@ -1,0 +1,16 @@
+#modal-root {
+   width: 100vw;
+   height: 100vh;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.Modal {
+   width: 500px;
+   height: 350px;
+   padding: 10px;
+   box-shadow: 0 5px 3px 3px #777;
+   background-color: #eee;
+   z-index: 2;
+}

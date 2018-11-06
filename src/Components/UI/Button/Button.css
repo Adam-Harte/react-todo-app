@@ -1,0 +1,27 @@
+button {
+   padding: 7px 10px;
+   margin: 10px;
+   border-radius: 3px;
+   border: none;
+   cursor: pointer;
+}
+
+.Submit {
+   background-color: lightgreen;
+   color: white;
+}
+
+.Submit:hover {
+   background-color: green;
+   color: white;
+}
+
+.Cancel {
+   background-color: lightcoral;
+   color: white;
+}
+
+.Cancel:hover {
+   background-color: red;
+   color: white;
+}
