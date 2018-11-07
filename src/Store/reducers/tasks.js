@@ -13,6 +13,11 @@ const reducer = (state = initialState, action) => {
             ...state,
             currentTasks: state.currentTasks.concat(action.task)
          };
+      case actionTypes.GET_TASK:
+         return {
+               ...state,
+               task: action.task
+         }
       case actionTypes.SET_CURRENT_TASKS:
          return {
             ...state,
@@ -26,13 +31,8 @@ const reducer = (state = initialState, action) => {
       case actionTypes.COMPLETE_TASK:
          return {
             ...state,
-            currentTasks: state.currentTasks.map(task => {
-               if (task.id === action.task.id) {
-                  return action.task;
-               } else {
-                  return task;
-               }
-            })
+            currentTasks: state.currentTasks.filter(task => task.id !== action.task.id),
+            completedTasks: state.completedTasks.concat(action.task)
          }
       case actionTypes.EDIT_TASK:
          return {

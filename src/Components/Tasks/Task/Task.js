@@ -62,9 +62,9 @@ class Task extends Component {
 
 const mapDispatchToProps = dispatch => {
    return {
-      onCompleteTask: (task, id) => actions.completeTask(task, id),
-      onEditTask: (task, id) => actions.editTask(task, id),
-      onDeleteTask: (id) => actions.deleteTask(id)
+      onCompleteTask: (task, id) => dispatch(actions.completeTask(task, id)),
+      onEditTask: (task, id) => dispatch(actions.editTask(task, id)),
+      onDeleteTask: (id) => dispatch(actions.deleteTask(id))
    };
 };
 
