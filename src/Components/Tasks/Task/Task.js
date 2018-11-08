@@ -10,7 +10,7 @@ import Input from '../../UI/Input/Input';
 import Backdrop from '../../UI/Backdrop/Backdrop';
 import Modal from '../../UI/Modal/Modal';
 
-class Task extends Component {
+export class Task extends Component {
 
    state = {
       editModal: false,
