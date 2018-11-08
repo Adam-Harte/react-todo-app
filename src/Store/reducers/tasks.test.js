@@ -17,11 +17,11 @@ describe('tasks reducer', () => {
          completedTasks: []
       }, {
          type: actionTypes.SET_COMPLETED_TASKS,
-         completedTasks: [{id: 1, title: 'hello', description: 'task 1', completed: true}, {id: 2, title: 'bye', description: 'task 2', completed: true}]
+         completedTasks: [{id: 1, title: 'hello', description: 'task 1', completed: true}, {id: 2, title: 'hello', description: 'task 1', completed: false}, {id: 3, title: 'bye', description: 'task 2', completed: true}]
       })).toEqual({
          task: null,
          currentTasks: [],
-         completedTasks: [{id: 1, title: 'hello', description: 'task 1', completed: true}, {id: 2, title: 'bye', description: 'task 2', completed: true}]
+         completedTasks: [{id: 1, title: 'hello', description: 'task 1', completed: true}, {id: 3, title: 'bye', description: 'task 2', completed: true}]
       });
    });
 
@@ -32,10 +32,10 @@ describe('tasks reducer', () => {
          completedTasks: []
       }, {
          type: actionTypes.SET_CURRENT_TASKS,
-         currentTasks: [{id: 1, title: 'hello', description: 'task 1', completed: false}, {id: 2, title: 'bye', description: 'task 2', completed: false}]
+         currentTasks: [{id: 1, title: 'hello', description: 'task 1', completed: false}, {id: 2, title: 'bye', description: 'task 2', completed: true}, {id: 3, title: 'bye', description: 'task 2', completed: false}]
       })).toEqual({
          task: null,
-         currentTasks: [{id: 1, title: 'hello', description: 'task 1', completed: false}, {id: 2, title: 'bye', description: 'task 2', completed: false}],
+         currentTasks: [{id: 1, title: 'hello', description: 'task 1', completed: false}, {id: 3, title: 'bye', description: 'task 2', completed: false}],
          completedTasks: []
       });
    });

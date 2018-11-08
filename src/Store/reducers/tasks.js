@@ -21,12 +21,12 @@ const reducer = (state = initialState, action) => {
       case actionTypes.SET_CURRENT_TASKS:
          return {
             ...state,
-            currentTasks: action.currentTasks
+            currentTasks: action.currentTasks.filter(task => !task.completed)
          };
       case actionTypes.SET_COMPLETED_TASKS:
          return {
             ...state,
-            completedTasks: action.completedTasks
+            completedTasks: action.completedTasks.filter(task => task.completed)
          };
       case actionTypes.COMPLETE_TASK:
          return {

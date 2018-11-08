@@ -37,14 +37,14 @@ export const getTasks = () => {
 export const setCurrentTasks = (tasks) => {
    return {
       type: actionTypes.SET_CURRENT_TASKS,
-      currentTasks: tasks.filter(task => !task.complete)
+      currentTasks: tasks
    };
 };
 
 export const setCompletedTasks = (tasks) => {
    return {
       type: actionTypes.SET_COMPLETED_TASKS,
-      completedTasks: tasks.filter(task => task.complete)
+      completedTasks: tasks
    };
 };
 
