@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux';
+
+import * as actions from '../../../Store/actions/index';
 
 import './Task.css';
 
@@ -8,22 +10,12 @@ import Input from '../../UI/Input/Input';
 import Backdrop from '../../UI/Backdrop/Backdrop';
 import Modal from '../../UI/Modal/Modal';
 
-class Task extends Component {
+export class Task extends Component {
 
    state = {
       editModal: false,
       editTaskTitle: this.props.data.title,
       editTaskDescription: this.props.data.description
-   }
-
-   completeClickHandler = (id) => {
-      console.log('complete click handler clicked');
-      const completedTask = {
-         title: this.props.data.title,
-         description: this.props.data.description,
-         complete: true
-      }
-      axios.put('' + id, completedTask)
    }
 
    toggleModal = (show) => {
@@ -32,16 +24,6 @@ class Task extends Component {
 
    inputChangeHandler = (event, taskData) => {
       this.setState({[taskData]: event.target.value});
-   }
-
-   editClickHandler = (id) => {
-      console.log('edit task handler clicked');
-      axios.put('' + id)
-   }
-
-   deleteClickHandler = (id) => {
-      console.log('delete click handler clicked');
-      axios.delete('' + id)
    }
 
    render () {
@@ -54,7 +36,7 @@ class Task extends Component {
                <Modal>
                   <Input inpType="text" inpPlaceholder="Title" inpValue={this.state.editTaskTitle} changed={(event) => this.inputChangeHandler(this.state.editTaskTitle)} />
                   <Input inpType="text" inpPlaceholder="Description" inpValue={this.state.editTaskDescription} changed={(event) => this.inputChangeHandler(this.state.editTaskDescription)} />
-                  <Button btnType="Submit" label="Submit" clicked={this.editClickHandler(this.props.data.id)} />
+                  <Button btnType="Submit" label="Submit" clicked={this.props.onEditTask(this.props.data, this.props.data.id)} />
                   <Button btnType="Cancel" label="Cancel" clicked={this.toggleModal(false)} />
                </Modal>
             </div>
@@ -68,9 +50,9 @@ class Task extends Component {
                <p>{this.props.data.description}</p>
             </div>
             <div className="controls-container">
-               {this.props.complete ? <Button btnType="Submit" label="Complete" clicked={this.completeClickHandler(this.props.data.id)} /> : null}
+               {this.props.complete ? <Button btnType="Submit" label="Complete" clicked={this.props.onCompleteTask(this.props.data, this.props.data.id)} /> : null}
                {this.props.edit ? <Button btnType="" label="Edit" clicked={this.toggleModal(true)} /> : null}
-               {this.props.delete ? <Button btnType="Cancel" label="Delete" clicked={this.deleteClickHandler(this.props.data.id)} /> : null}
+               {this.props.delete ? <Button btnType="Cancel" label="Delete" clicked={this.props.onDeleteTask(this.props.data.id)} /> : null}
             </div>
             {modal}
          </div>
@@ -78,4 +60,12 @@ class Task extends Component {
    }
 };
 
-export default Task;
+const mapDispatchToProps = dispatch => {
+   return {
+      onCompleteTask: (task, id) => dispatch(actions.completeTask(task, id)),
+      onEditTask: (task, id) => dispatch(actions.editTask(task, id)),
+      onDeleteTask: (id) => dispatch(actions.deleteTask(id))
+   };
+};
+
+export default connect(null, mapDispatchToProps)(Task);
