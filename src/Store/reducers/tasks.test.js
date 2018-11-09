@@ -1,5 +1,6 @@
 import reducer from './tasks';
 import * as actionTypes from '../actions/actionTypes';
+import deepfreeze from 'deep-freeze';
 
 describe('tasks reducer', () => {
    it('should return the initial state for the default case', () => {
@@ -11,11 +12,11 @@ describe('tasks reducer', () => {
    });
 
    it('should store the completed tasks upon getTasks', () => {
-      expect(reducer({
+      expect(reducer(deepfreeze({
          task: null,
          currentTasks: [],
          completedTasks: []
-      }, {
+      }), {
          type: actionTypes.SET_COMPLETED_TASKS,
          completedTasks: [{id: 1, title: 'hello', description: 'task 1', completed: true}, {id: 2, title: 'hello', description: 'task 1', completed: false}, {id: 3, title: 'bye', description: 'task 2', completed: true}]
       })).toEqual({
@@ -26,11 +27,11 @@ describe('tasks reducer', () => {
    });
 
    it('should store the current tasks upon getTasks', () => {
-      expect(reducer({
+      expect(reducer(deepfreeze({
          task: null,
          currentTasks: [],
          completedTasks: []
-      }, {
+      }), {
          type: actionTypes.SET_CURRENT_TASKS,
          currentTasks: [{id: 1, title: 'hello', description: 'task 1', completed: false}, {id: 2, title: 'bye', description: 'task 2', completed: true}, {id: 3, title: 'bye', description: 'task 2', completed: false}]
       })).toEqual({
@@ -41,11 +42,11 @@ describe('tasks reducer', () => {
    });
 
    it('should store a task upon getTask', () => {
-      expect(reducer({
+      expect(reducer(deepfreeze({
          task: null,
          currentTasks: [],
          completedTasks: []
-      }, {
+      }), {
          type: actionTypes.GET_TASK,
          task: {id: 1, title: 'hello', description: 'task 1', completed: false}
       })).toEqual({
